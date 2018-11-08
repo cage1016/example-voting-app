@@ -18,7 +18,7 @@ steps:
     args:
       - push
       - gcr.io/$PROJECT_ID/vote-result:${REVISION_ID}
-  - id: deploy to result stage
+  - id: deploy to result production
     name: gcr.io/cloud-builders/kubectl
     dir: result
     args:
@@ -26,7 +26,7 @@ steps:
       - image
       - 'deployment/vote-result-deployment'
       - 'vote-result-pod=gcr.io/$PROJECT_ID/vote-result:${REVISION_ID}'
-      - '--namespace=stage'
+      - '--namespace=default'
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=asia-east2-b'
     - 'CLOUDSDK_CONTAINER_CLUSTER=exapmple-voting-app-demo'
