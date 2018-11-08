@@ -20,6 +20,7 @@ steps:
       - image
       - 'deployment/vote-result-deployment'
       - 'vote-result-pod=gcr.io/$PROJECT_ID/vote-result:${REVISION_ID}'
+      - '--namespace=stage'
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=asia-east2-b'
     - 'CLOUDSDK_CONTAINER_CLUSTER=exapmple-voting-app-demo'
