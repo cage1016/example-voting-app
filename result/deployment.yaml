@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: vote-result-pod
-        image: qeek-dev/vote-result
+        image: gcr.io/cloud-build-testbed/vote-result
         command: ["nodemon"]
         args: ["--debug", "server.js"]
         ports:
@@ -33,6 +33,6 @@ spec:
     targetPort: 80
   selector:
     app: vote-result
-  type: NodePort
+  type: LoadBalancer
 status:
   loadBalancer: {}

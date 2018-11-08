@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: vote-worker-pod
-        image: qeek-dev/vote-worker
+        image: gcr.io/cloud-build-testbed/vote-worker
