@@ -1,19 +1,13 @@
-apiVersion: skaffold/v1alpha5
+apiVersion: skaffold/v1beta8
 kind: Config
 build:
   artifacts:
   - image: gcr.io/cloud-build-testbed/vote-app
     context: ./vote
-    docker:
-      dockerfile: Dockerfile
   - image: gcr.io/cloud-build-testbed/vote-result
     context: ./result
-    docker:
-      dockerfile: Dockerfile
   - image: gcr.io/cloud-build-testbed/vote-worker
     context: ./worker
-    docker:
-      dockerfile: Dockerfile
 deploy:
   kubectl:
     manifests:    
@@ -22,3 +16,8 @@ deploy:
     - result/deployment.yaml
     - vote/deployment.yaml
     - worker/deployment.yaml
+
+profiles:
+  - name: cloud-build
+    build:
+      googleCloudBuild: {}
